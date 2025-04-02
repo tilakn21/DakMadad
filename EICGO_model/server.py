@@ -9,6 +9,7 @@ from firebase_admin import credentials, firestore, initialize_app
 from flask import Flask, jsonify, request, redirect
 from dotenv import load_dotenv
 from pathlib import Path
+import boto3
 
 # Load environment variables
 env_path = Path(__file__).parent / ".env"
@@ -27,6 +28,14 @@ if not firebase_admin._apps:
 
 
 app = Flask(__name__)
+s3 = boto3.client('s3', 
+    aws_access_key_id=os.getenv('AWS_ACCESS_KEY_ID'),
+    aws_secret_access_key=os.getenv('AWS_SECRET_ACCESS_KEY')
+)
+s3 = boto3.client('s3', 
+    aws_access_key_id='AKIAUGO4K7OFTPPFSRVK', 
+    aws_secret_access_key='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'
+)
 
 # Directory to save uploaded photos
 UPLOAD_FOLDER = "scanned_posts"
@@ -246,4 +255,5 @@ def home():
 
 
 if __name__ == "__main__":
-    app.run(debug=True)
+    port = int(os.environ.get("PORT", 80))
+    app.run(host="0.0.0.0", port=port)
