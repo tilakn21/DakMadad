@@ -1,0 +1,37 @@
+{
+    "azure": "Tilak Neema 7470559957 5 A Parshwanath Nagar Indore (M.P)",
+    "post_id": "174435611568",
+    "receiver_details": {
+        "post_id": "174435611568",
+        "name": "Tilak Neema",
+        "phone_number": "7470559957",
+        "address": "5 A Parshwanath Nagar Indore (M.P)",
+        "pincode": "None"
+    },
+    "geocoded_info": {
+        "formattedAddress": "5A, Parshwanath Nagar, Indore, Madhya Pradesh 452009, India",
+        "latitude": 22.688275,
+        "longitude": 75.84286999999999,
+        "pincode": "452009",
+        "city": "Indore",
+        "state": "Madhya Pradesh"
+    },
+    "nearest_post_office": {
+        "name": "Sudama Nagar S.O",
+        "pincode": 452009,
+        "delivery_type": "Delivery",
+        "state": "MADHYA PRADESH",
+        "latitude": 22.6953333,
+        "longitude": 75.8360556,
+        "office_type": "PO"
+    },
+    "events": [
+        {
+            "date": "2025-04-11",
+            "time": "12:51 PM",
+            "location": "post office",
+            "status": "Post Received"
+        }
+    ],
+    "updated_at": "2025-04-11 12:51:55"
+}

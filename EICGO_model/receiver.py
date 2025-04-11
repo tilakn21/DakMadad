@@ -143,8 +143,8 @@ load_dotenv()
 
 def process_photo(photo_path):
     # Fetch Azure credentials from environment variables
-    endpoint = os.getenv("AZURE_OCR_ENDPOINT")
-    key = os.getenv("AZURE_OCR_KEY")
+    endpoint = os.getenv("AZURE_ENDPOINT")
+    key = os.getenv("AZURE_KEY")
 
     if not endpoint or not key:
         raise ValueError("Azure OCR credentials (endpoint and key) are not set in .env")
@@ -176,7 +176,7 @@ def extract_address_details(address):
 
         # Sending the request to Groq API to process the address
         completion = client.chat.completions.create(
-            model="llama-3.1-70b-versatile",
+            model="llama-3.3-70b-versatile",
             messages=[
                 {
                     "role": "system",
@@ -303,7 +303,7 @@ if __name__ == "__main__":
         with open("credentials.json", "r") as file:
             credentials = json.load(file)
         
-        api_key = credentials["google_api_key"]
+        api_key = os.getenv("GOOGLE_API_KEY")
         geocoded_info = geocode_address(api_key, receiver_address ,receiver_pincode)
         if "pincode" in geocoded_info:
             correct_receiver_pincode = geocoded_info["pincode"]
@@ -324,6 +324,7 @@ if __name__ == "__main__":
         
         print(near_po_name, near_pincode)
         post_id = generate_unique_post_id()
+        print(post_id)
         current_time = datetime.now().strftime("%I:%M %p")  # Time in 12-hour format
         current_date = datetime.now().strftime("%Y-%m-%d")  # Date in YYYY-MM-DD format
         
@@ -351,7 +352,7 @@ if __name__ == "__main__":
         }
 
         # Upload to Firestore
-        upload_to_firestore(post_id, data)
+        # upload_to_firestore(post_id, data)
         
         # Assuming you already have post_id, near_pincode, and near_po_name defined
         qr_link = f"https://cd6d-49-249-229-42.ngrok-free.app/check_delivery?post_id={post_id}"
